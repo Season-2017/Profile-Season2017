@@ -3,18 +3,19 @@
   <head>
     <meta charset="utf-8">
     <title>Season2017</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <style>
       #grid
       {
         display: grid;
-        grid-template-columns: 200px 1fr;
+        grid-template-columns: 200px 875px 1fr;
         height: 100%;
         margin: 0;
       }
       .grid
       {
         display: grid;
-        grid-template-columns: 1075px 1fr;
+        grid-template-columns: 200px 875px 1fr;
         height: 10%;
         margin: 0;
       }
@@ -30,6 +31,10 @@
       {
 
       }
+      #borderdiv4
+      {
+
+      }
       #disc
       {
         list-style-type: disc;
@@ -38,22 +43,21 @@
       {
         color: grey;
       }
-      #active
-      {
-        background-color: yellow; color: red;
-      }
     </style>
   </head>
   <body style="height:100%;">
     <div class="grid">
-      <div id="borderdiv" class="제목" style="border-bottom:5px solid black; margin:0;">
+      <div id="borderdiv4" class="메뉴버튼" style="border-bottom:5px solid black; border-right:5px solid black; padding-top:25px; padding-left:70px; margin:0;">
+        <input type="button" id="menu" value="Menu">
+      </div>
+      <div id="borderdiv" class="제목" style="border-bottom:5px solid black; padding-left:30px; margin:0;">
         <h1><a href="index.html">Profile - Season2017</a></h1>
       </div>
-      <div id="borderdiv2" class="야간/주간모드" style="border-left:5px solid black; padding-top:25px; padding-left:40px; margin:0; border-bottom:5px solid black; margin:0;">
-        <input type="button" id="night_day" value="night" onclick="
+      <div id="borderdiv2" class="야간/주간모드버튼" style="border-left:5px solid black; padding-top:25px; padding-left:40px; margin:0; border-bottom:5px solid black; margin:0;">
+        <input type="button" id="night_day" value="Night" onclick="
           var body = document.querySelector('body')
 
-          if (document.querySelector('#night_day').value === 'night')
+          if (document.querySelector('#night_day').value === 'Night')
           {
             body.style.backgroundColor = 'black';
             body.style.color = 'white';
@@ -61,7 +65,9 @@
             document.querySelector('#borderdiv2').style.borderLeftColor = 'white';
             document.querySelector('#borderdiv2').style.borderBottomColor = 'white';
             document.querySelector('#borderdiv3').style.borderRightColor = 'white';
-            document.querySelector('#night_day').value = 'day';
+            document.querySelector('#borderdiv4').style.borderBottomColor = 'white';
+            document.querySelector('#borderdiv4').style.borderRightColor = 'white';
+            document.querySelector('#night_day').value = 'Day';
           }
           else
           {
@@ -71,7 +77,9 @@
             document.querySelector('#borderdiv2').style.borderLeftColor = 'black';
             document.querySelector('#borderdiv2').style.borderBottomColor = 'black';
             document.querySelector('#borderdiv3').style.borderRightColor = 'black';
-            document.querySelector('#night_day').value = 'night';
+            document.querySelector('#borderdiv4').style.borderBottomColor = 'black';
+            document.querySelector('#borderdiv4').style.borderRightColor = 'black';
+            document.querySelector('#night_day').value = 'Night';
           }
         ">
       </div>
@@ -79,20 +87,46 @@
     <div id="grid">
       <div id="borderdiv3" class="메뉴" style="border-right:5px solid black; height:100%; margin:0;">
         <ol id="disc">
-          <li><a style="text-decoration:none" href="1-1.html">Main_Menu</a></li>
-          <li><a style="text-decoration:none" href="1-2.html">Other_Site</a></li>
-          <li><a style="text-decoration:none" href="1-3.html">Video_Collection</a></li>
+          <li><a id="list1-1" style="text-decoration:none" href="1-1.html">Main_Menu</a></li>
+          <li><a id="list1-2" style="text-decoration:none" href="1-2.html">Other_Site</a></li>
+          <li><a id="list1-3" style="text-decoration:none" href="1-3.html">Video_Collection</a></li>
         </ol>
         <ol>
-          <li><a style="text-decoration:none" href="2-1.html">Introducing_Me</a></li>
-          <li><a style="text-decoration:none" href="2-2.html">Career</a></li>
-          <li><a style="text-decoration:none" href="2-3.html">My_Games</a></li>
-          <li><a style="text-decoration:none" href="2-4.html" id="active">My_Blog</a></li>
+          <li><a id="list2-1" style="text-decoration:none" href="2-1.html">Introducing_Me</a></li>
+          <li><a id="list2-2" style="text-decoration:none" href="2-2.html">Skills</a></li>
+          <li><a id="list2-3" style="text-decoration:none" href="2-3.html">My_Games</a></li>
+          <li><a id="list2-4" style="text-decoration:none" href="2-4.html">My_Blog</a></li>
         </ol>
       </div>
       <div class="내용" style="padding-left:50px; padding-top:15px;">
-        My_Blog
+        <h2>My_Blog</h2>
+        <img src="Youtube Namecard.jpg" width="150px" height="150px">
+        <h3>*지금은 준비중입니다*</h3>
       </div>
     </div>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('#borderdiv3').show();
+
+        var menubool = true;
+        $('#menu').click(function() {
+          if (menubool === false)
+          {
+            $('#borderdiv3').fadeIn("fast");
+            menubool = true;
+            $('#grid').css("grid-template-columns", "200px 875px 1fr");
+          }
+          else
+          {
+            $('#borderdiv3').fadeOut("fast", function() {
+                $('#grid').css("grid-template-columns", "1075px 1fr");
+            });
+            menubool = false;
+          }
+        });
+      });
+    </script>
+    <script type="text/javascript" src="a.js"></script>
+
   </body>
 </html>
